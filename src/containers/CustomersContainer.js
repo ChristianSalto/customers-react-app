@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import AppFrame from './../components/AppFrame';
 import CustomersList from './../components/CustomersList';
 import CustomersActions from './../components/CustomersActions';
+import { fetchCustomers } from '../actions/fetchCustomers';
 
 const customers = [
   {
@@ -23,6 +26,14 @@ const customers = [
 ];
 
 class CustomersContainer extends Component {
+
+  componentDidMount() {
+    this.props.fetchCustomers();
+  }
+
+  handleAddNew = () => {
+    this.props.history.push('/customers/new')
+  }
 
   renderBody = (customers) => (
     <div>
@@ -46,7 +57,15 @@ class CustomersContainer extends Component {
 }
 
 CustomersContainer.protoTypes = {
-
+  fetchCustomers: PropTypes.func.isRequired,
 };
 
-export default CustomersContainer;
+// const mapDispatchToProps = dispatch => (
+//   {
+//     fetchCustomers: () => dispatch(fetchCustomers())
+//   }
+// )
+
+// const mapDispatchToProps = { fetchCustomers } // Es una forma simplificada de la funcion que esta comentada 
+
+export default withRouter(connect(null, { fetchCustomers })(CustomersContainer));
