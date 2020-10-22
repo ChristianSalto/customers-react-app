@@ -6,24 +6,9 @@ import AppFrame from './../components/AppFrame';
 import CustomersList from './../components/CustomersList';
 import CustomersActions from './../components/CustomersActions';
 import { fetchCustomers } from '../actions/fetchCustomers';
+import { getCustomers } from './../selectors/customers'
 
-const customers = [
-  {
-    "dni": "52003344A",
-    "name": "Sergio",
-    "age": 36
-  },
-  {
-    "dni": "33220023G",
-    "name": "Paco",
-    "age": 55
-  },
-  {
-    "dni": "76440092W",
-    "name": "Pepe",
-    "age": 44
-  }
-];
+
 
 class CustomersContainer extends Component {
 
@@ -50,7 +35,7 @@ class CustomersContainer extends Component {
     return (
       <div>
         <AppFrame header={'Listado de clientes'}
-          body={this.renderBody(customers)}></AppFrame>
+          body={this.renderBody(this.props.customers)}></AppFrame>
       </div>
     )
   }
@@ -58,7 +43,16 @@ class CustomersContainer extends Component {
 
 CustomersContainer.protoTypes = {
   fetchCustomers: PropTypes.func.isRequired,
+  customers: PropTypes.array.isRequired,
 };
+
+CustomersContainer.defaultProps = {
+  customers: []
+}
+
+const mapStateToProps = (state) => ({
+  customers: getCustomers(state)
+});
 
 // const mapDispatchToProps = dispatch => (
 //   {
@@ -68,4 +62,4 @@ CustomersContainer.protoTypes = {
 
 // const mapDispatchToProps = { fetchCustomers } // Es una forma simplificada de la funcion que esta comentada 
 
-export default withRouter(connect(null, { fetchCustomers })(CustomersContainer));
+export default withRouter(connect(mapStateToProps, { fetchCustomers })(CustomersContainer));
