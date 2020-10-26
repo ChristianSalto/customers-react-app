@@ -18,6 +18,10 @@ body {
   );
 }
 
+.app-frame > div {
+  margin-bottom: 20px;
+}
+
 .customers-actions {
   background: #aaa;
   padding: 10px;
