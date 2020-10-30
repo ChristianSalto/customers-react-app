@@ -2,18 +2,21 @@
   "customers": [
     {
       "dni": "52003344A",
-      "name": "Sergio",
-      "age": 36
+      "name": "KEKO",
+      "age": 5,
+      "id": "52003344A"
     },
     {
+      "id": "33220023G",
       "dni": "33220023G",
       "name": "Paco",
-      "age": 55
+      "age": 58
     },
     {
+      "id": "76440092W",
       "dni": "76440092W",
       "name": "Pepe",
-      "age": 44
+      "age": 61
     }
   ],
   "posts": [

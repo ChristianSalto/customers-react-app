@@ -37,6 +37,16 @@ const MyField = ({ input, meta, type, label, name }) => (
   </div >
 );
 
+// Son validaciones que podemos aplicar al componente Field de redux-form
+
+const toNumber = value => value && Number(value);
+const toUpper = value => value && value.toUpperCase();
+const toLower = value => value && value.toLowerCase();
+const onlyGrow = (value, previousValue, values) =>
+  value && previousValue && (value > previousValue ? value : previousValue);
+
+/******************************* */
+
 const CustomerEdit = ({ name, dni, age, handleSubmit, submitting, onBack }) => {
   return (
     <div>
@@ -46,7 +56,9 @@ const CustomerEdit = ({ name, dni, age, handleSubmit, submitting, onBack }) => {
           name="name"
           component={MyField}
           // validate={isRequired}
-          label="Nombre">
+          label="Nombre"
+          parse={toUpper}
+          format={toLower}>
         </Field>
 
         <Field
@@ -61,7 +73,9 @@ const CustomerEdit = ({ name, dni, age, handleSubmit, submitting, onBack }) => {
           component={MyField}
           type="number"
           validate={isNumber}
-          label="Edad">
+          label="Edad"
+          parse={toNumber}
+          normalize={onlyGrow}>
         </Field>
         <CustomersActions>
           <button type="submit" disabled={submitting}>Aceptar</button>
