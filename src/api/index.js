@@ -5,4 +5,10 @@ export const apiPut = (url, id, obj) => () =>
     method: 'PUT',
     body: JSON.stringify(obj),
     headers: new Headers({ 'Content-type': 'application/json' })
-  }).then(v => v.json());
+  }).then(v => v.json()).then((r => {
+    console.log("2", r)
+    if (r.error) {
+      return ({ error: r.validation });
+    }
+    return r
+  }));

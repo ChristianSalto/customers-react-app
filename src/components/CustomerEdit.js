@@ -8,9 +8,11 @@ import CustomersActions from '../components/CustomersActions';
 //   !value && "Este campo es requerido"
 // );
 
-const isNumber = (value) => (
-  isNaN(Number(value)) && "El campo debe ser un numero"
-);
+const isNumber = (value) => {
+  // console.log(value)
+  return isNaN(Number(value)) && "El campo debe ser un numero"
+}
+
 
 const validate = values => {
   const error = {};
@@ -27,7 +29,7 @@ const validate = values => {
 }
 
 const MyField = ({ input, meta, type, label, name }) => (
-  <div>
+  < div >
     <label htmlFor={name}>{label}</label>
     <input {...input} type={!type ? "text" : type} />
     {
@@ -42,8 +44,8 @@ const MyField = ({ input, meta, type, label, name }) => (
 const toNumber = value => value && Number(value);
 const toUpper = value => value && value.toUpperCase();
 const toLower = value => value && value.toLowerCase();
-const onlyGrow = (value, previousValue, values) =>
-  value && previousValue && (value > previousValue ? value : previousValue);
+// const onlyGrow = (value, previousValue, values) =>
+//   value && previousValue && (value > previousValue ? value : previousValue);
 
 /******************************* */
 
@@ -74,8 +76,8 @@ const CustomerEdit = ({ name, dni, age, handleSubmit, submitting, onBack }) => {
           type="number"
           validate={isNumber}
           label="Edad"
-          parse={toNumber}
-          normalize={onlyGrow}>
+          parse={toNumber}>
+          {/* normalize={onlyGrow}> */}
         </Field>
         <CustomersActions>
           <button type="submit" disabled={submitting}>Aceptar</button>

@@ -4,11 +4,8 @@ const server = jsonServer.create()
 const router = jsonServer.router('db.json')
 const middlewares = jsonServer.defaults()
 
-server.use(middlewares)
+server.use(middlewares);
 
-server.listen(3001, () => {
-  console.log('JSON Server is running')
-})
 
 server.put('/customers/30000001', (req, res) => {
   let body = [];
@@ -23,13 +20,17 @@ server.put('/customers/30000001', (req, res) => {
         error: true,
         validation: {
           age: 'Debe ser menor de edad',
-          name: 'El nombre es incorrecto' // Esto se agrega en un video más adelante
+          name: 'El nombre es incorrecto'
         }
       });
     } else {
-      res.send({ error: false });
+      res.send('ok');
     }
   });
+});
 
 
+server.use(router);
+server.listen(3001, () => {
+  console.log('JSON Server is running')
 })
