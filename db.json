@@ -9,7 +9,7 @@
     {
       "id": "33220023G",
       "dni": "33220023G",
-      "name": "lolo",
+      "name": "EDU",
       "age": 85
     },
     {
@@ -23,6 +23,18 @@
       "dni": "44440001",
       "name": "marta",
       "age": 33
+    },
+    {
+      "name": "JHON",
+      "dni": "66637666",
+      "age": 20,
+      "id": "wx_r1RM"
+    },
+    {
+      "name": "ROBERT",
+      "dni": "36448902",
+      "age": 30,
+      "id": "_OJvw_p"
     }
   ],
   "posts": [
