@@ -3,7 +3,6 @@ import HomeContainers from './containers/HomeContainers'
 import CustomersContainer from './containers/CustomersContainer'
 import CustomerContainer from './containers/CustomerContainer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import './App.css';
 import NewCustomerContainer from './containers/NewCustomerContainer';
 
 function App() {
